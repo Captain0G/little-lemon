@@ -1,10 +1,11 @@
 
 import './App.css';
-
+import ListGroup from './components/ListGroup';
 function App() {
   return (
     <div className="App">
-      Homepage
+  
+      <ListGroup/>
     </div>
   );
 }
