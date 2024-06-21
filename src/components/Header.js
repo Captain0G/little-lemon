@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 
 
 function Header () {
 
     return <header>
    
+    <div className="header-wrapper">
 
       <div className="header-text">
 
@@ -13,11 +15,13 @@ function Header () {
 
     </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-    <button>Reserve a Table</button>
+    <Link className="button" to='/booking'>Reserve a Table</Link>
 
         </div>
 
     <img className="hero-img" src="/assets/restauranfood.jpg" alt="" />
+
+    </div>
 
    
     </header>

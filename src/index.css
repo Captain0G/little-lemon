@@ -1,196 +1,318 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Markazi+Text:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Markazi+Text:wght@400..700&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Karla", serif;
-    font-weight: 400;
-    font-size: 1.2rem;
-    font-optical-sizing: auto;
-    font-style: normal;
-    scroll-behavior: smooth;
-  }
- 
-  html, body{
-    height: 100%;
-
-  }
-
- #root{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karla", serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-optical-sizing: auto;
+  font-style: normal;
+  scroll-behavior: smooth;
 }
-button{
-    font-family: "Markazi Text", serif;
-    border-radius: 16px;
-    border: 0;
-    max-width: -moz-fit-content;
-    max-width: fit-content;
-    padding:0.5rem 1rem;
-    background-color: #F4CE14;
-    color: black;
-    
+
+html,
+body {
+  min-height: 100dvh;
 }
-h1{
-    color:#F4CE14;
-    font-weight: 700;
-    font-size: 2.3rem;
-    line-height: 1rem;
+a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
-h2{
-    font-weight: 500;
-    font-size: 1.5rem;
+
+#root {
+  display: grid;
+  grid-template-rows: 150px repeat(3, 1fr);
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
 }
-p{  
-    font-family: "Karla";
-    font-weight: 300;
-    font-size: 0.8rem;
+main {
+  display: grid;
+  grid-row: 2 / 5;
+
+  min-height: 100%;
 }
-.ll-heading{
-    font-family: "Markazi Text", serif;
+.button {
+  font-family: "Markazi Text", serif;
+  border-radius: 16px;
+  border: 0;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  padding: 0.5rem 1rem;
+  background-color: #f4ce14;
+  color: black;
+  cursor: pointer;
 }
-.nav{
-   
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 2rem ;
-    position: sticky;
-    top: 0;
-    background-color: white;
-    }
-    .nav ul{
-        list-style: none;
-        display: flex;
-        gap: 1rem;
-        padding: 1rem;
-    }
-    .nav img{
-        
-    }
+h1 {
+  color: #f4ce14;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 1.5rem;
+}
+h2 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+p {
+  font-family: "Karla";
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+.ll-heading {
+  font-family: "Markazi Text", serif;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: white;
+}
+.items-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1000px;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.nav img {
+  width: 200px;
+}
 
-    header{
-        background-color: #495E57;
-        color: white;
-        display: flex;
-        flex-wrap: wrap;
-       justify-content: space-evenly;
-       padding: 2rem;
-        max-height: 337px;
-    }
-    .header-text{
-        display: flex;
-        flex-direction: column;
-   
-        gap: 1rem;
-        max-width: 30%;
-    }
-    .hero-img{
-        height: 395px;
-        max-height: 100%;
-        border-radius: 16px;
-    }
-    section{
+header {
+  background-color: #495e57;
+  display: flex;
+  justify-content: center;
+}
+.header-wrapper {
+  color: white;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 1rem 4rem;
+  max-height: 337px;
+  max-width: 1000px;
+}
+.header-text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  padding-right: 1rem;
+  gap: 1rem;
+}
+.hero-img {
+  height: 395px;
+  max-height: 100%;
+  border-radius: 16px;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2rem;
+  min-height: 60dvh;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+}
+.section-title {
+  font-family: "Karla";
+  font-weight: 900;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.section-content {
+  max-width: 1000px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
-        display: flex;
-        flex-direction: column;
-       justify-content: space-evenly;
-       align-items: center;
-       padding: 2rem;
-       min-height: 50dvh;
-   
-    }
-    .section-title{
-        font-family: "Karla";
-        font-weight: 900;
-        font-size: 2rem;
+footer {
+  grid-row: -1;
+  margin-top: auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #d9d9d9;
+}
+footer > ul,
+li {
+  list-style: none;
+}
 
-    }
-    .section-content{
-        max-width: 1000px;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-       justify-content: space-evenly;
-      }
-    main{
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-    footer{
-        margin-top: auto;
-        padding: 2rem;
-        display: flex;
-        justify-content: space-evenly;
-        background-color: #D9D9D9;
-    }
-    footer>ul,li{
-        list-style: none;
+.card {
+  display: grid;
+  grid-template-rows: 4fr 3fr 10%;
+  background-color: #edefee;
+  transition: 0.3s;
+  border-radius: 16px; /* 5px rounded corners */
+  max-width: 300px;
+}
+.card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+.card-title > h4 {
+  font-weight: 700;
+  font-size: 18pt;
+}
+.card-title > p {
+  font-size: 16pt;
+  line-height: 1.5pt;
+}
+.price {
+  color: #ee9972;
+  font-weight: 600;
+}
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border-radius: 16px 16px 0 0;
+}
 
-    }
-
-    .card {
-        background-color: #EDEFEE;
-        transition: 0.3s;
-        border-radius: 16px; /* 5px rounded corners */
-       max-width: 300px;
-      }
-      .card-text{
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem;
-      }
-      .card-title{
-        display: flex;
-        justify-content: space-between;
-      }
-      .card-title>h4{
-        font-weight: 800;
-        font-size: 1.2rem;
-      }
-      /* Add rounded corners to the top left and the top right corner of the image */
-      img {
-        border-radius: 16px 16px 0 0;
-
-      }
-
-      .cards-wrapper{
-        display: flex;
-        gap:2rem;
-        justify-content: center;
-        padding: 1rem 0;
-        flex-wrap: wrap;
-
-      }
-
-      .chicago-img{
-        height: 395px;
-        max-height: 100%;
-        border-radius: 16px;
-      }
-      .top-img{
-        position: absolute;
-        top: -150px;
-        left: -150px;
-     z-index: 2;
-     max-width: 300px;
- 
-      }
-      .bottom-img{
-      object-fit: cover;
-        z-index:1 ;
-        max-width: 300px;
-      }
-      .overlap{
-        position: relative;
-        width: 100%;
-       
-        
-      }
+.cards-wrapper {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+a.order-link {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0 1rem;
+}
+.rating-section {
+  background-color: #495e57;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 40dvh;
+}
+.rating-section h2 {
+  color: white;
+}
+.reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.rating-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 16px;
+  background-color: white;
+}
+.rating-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.rating-user {
+  font-size: 16pt;
+  font-weight: 700;
+}
+.rating-stars {
+  font-size: medium;
+  font-weight: 700;
+}
+.avatar {
+  border-radius: 16px;
+  max-width: 75px;
+}
+.rating-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1rem;
+}
+.rating-text {
+  font-size: 14pt;
+  padding: 1rem 0;
+}
+.section-chicago {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: end;
+}
+.chicago-img {
+  height: 395px;
+  max-height: 100%;
+  max-width: 300px;
+  border-radius: 16px;
+  object-fit: cover;
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.top-img {
+  z-index: 2;
+  transform: translateY(-100px) translateX(-100px);
+  object-position: 80%;
+}
+.bottom-img {
+}
+#text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  padding-right: 1rem;
+  gap: 1rem;
+}
+#imgs {
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.booking-table {
+  grid-column: 2/4;
+  justify-items: center;
+}
+table {
+  max-width: 800px;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 18pt;
+  text-align: left;
+  background-color: white;
+  border-radius: 16px;
+  
+}
+th,
+td {
+  padding: 1rem;
+  
+}
+.confirmation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: #495e57;
+}
+.confirmation h1 {
+  grid-column: 2/4;
+  align-self: center;
+  line-height: normal;
+  text-align: center;
+}

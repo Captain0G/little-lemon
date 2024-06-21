@@ -1,9 +1,10 @@
 
 
-function Main () {
+function Main ({children}) {
+    
 
     return <main>
-       Main content
+       {children}
     </main>
 }
 

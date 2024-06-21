@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Card from "./Card";
 
 function Specials () {
@@ -9,16 +10,17 @@ function Specials () {
     return <section>
       <div className="section-content">
 
-
-    <h2 className="section-title">SPECIALS {5+5}</h2>
-
+ <div className="section-header">
+    <h2 className="section-title">SPECIALS</h2>
+      <Link to="/booking "className="button">Online Menu</Link>
+   </div>
+      
     <div className="cards-wrapper">
 
-    {menu.map(item=> <Card dish={item.dish} price={item.price} pic={item.pic} description={item.description}/>)}
+    {menu.map(item=> <Card key={item.dish} dish={item.dish} price={item.price} pic={item.pic} description={item.description}/>)}
 
     </div>
-
-      </div>
+    </div>
  
     
 
