@@ -49,7 +49,7 @@ function CustomersSay() {
                 key={review.user}
                 pic={review.pic}
                 user={review.user}
-                stars={review.stars}
+                rating={review.stars}
                 text={review.text}
               />
             ))

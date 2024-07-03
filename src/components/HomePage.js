@@ -5,10 +5,12 @@ import Main from "./Main";
 import Specials from "./Specials";
 import CustomersSay from "./CustomersSay";
 import Chicago from "./Chicago";
-function HomePage() {
+import Sidebar from "./Sidebar";
+function HomePage({isBurger, setBurger}) {
   return (
     <>
-      <Nav />
+      <Nav isBurger={isBurger} setBurger={setBurger} />
+
     <Main>
       <Header />
       <Specials />

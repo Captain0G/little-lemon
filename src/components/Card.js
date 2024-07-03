@@ -10,7 +10,7 @@ function Card({ pic, dish, price, description }) {
         </div>
         <p>{description}</p>
       </div>
-      <Link to="#" className="order-link">
+      <Link to="#" aria-label="On Click" className="order-link">
         Order a delivery
       </Link>
     </div>

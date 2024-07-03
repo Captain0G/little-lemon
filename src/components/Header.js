@@ -15,7 +15,7 @@ function Header () {
 
     </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-    <Link className="button" to='/booking'>Reserve a Table</Link>
+    <Link className="button" aria-label="On Click" role="button" to='/booking'>Reserve a Table</Link>
 
         </div>
 

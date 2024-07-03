@@ -3,7 +3,12 @@ import React from 'react'
 const ConfirmationTable = ({reservation}) => {
   return (
     <table className="booking-table">
+        
     <tbody>
+    <tr>
+            <td>Name</td>
+            <td>{reservation.name}</td>
+        </tr>
         <tr>
             <td>Date</td>
             <td>{reservation.date}</td>
@@ -19,6 +24,10 @@ const ConfirmationTable = ({reservation}) => {
         <tr>
             <td>Occasion</td>
             <td>{reservation.occasion}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{reservation.email}</td>
         </tr>
     </tbody>
 </table>

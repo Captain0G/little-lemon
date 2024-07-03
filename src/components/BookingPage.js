@@ -5,13 +5,12 @@ import BookingForm from "./BookingForm";
 import { useReducer, useState } from "react";
 import Main from "./Main";
 import { useNavigate } from "react-router-dom";
-function BookingPage() {
+import Sidebar from "./Sidebar";
+function BookingPage({isBurger, setBurger}) {
   const navigate = useNavigate("");
 
   const updateTimes = (availableTimes, action) => {
-    console.log(action);
     availableTimes = fetchAPI(new Date(action.selectedDate));
-    console.log(availableTimes);
     return availableTimes;
   };
 
@@ -25,15 +24,18 @@ function BookingPage() {
   const initializeTimes = () => fetchAPI(today);
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
   const [reservation, setReservation] = useState({
-    date: "",
+    date: new Date().toISOString().split("T")[0],
+    name: "",
+    email: "",
     time: "",
-    guests: 0,
+    guests: "",
     occasion: "",
   });
 
   return (
     <>
-        <Nav />
+     <Nav isBurger={isBurger} setBurger={setBurger}/>
+    
       <Main>
         <BookingForm
           reservation={reservation}
@@ -43,7 +45,6 @@ function BookingPage() {
           today={today}
           submitForm={submitForm}
         />
-        
       </Main>
       <Footer />
     </>

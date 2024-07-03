@@ -3,6 +3,7 @@
 function Chicago() {
 
     return <section className="section-chicago" >
+        
       <div  id="text">
 
     <div>

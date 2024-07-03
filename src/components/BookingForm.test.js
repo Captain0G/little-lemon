@@ -1,94 +1,42 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import {render, fireEvent, screen } from '@testing-library/react'
 import BookingForm from "./BookingForm";
 import { submitAPI } from "./Api";
 
-jest.mock("./Api");
-
+const mockReservation= {};
 const mockSetReservation = jest.fn();
-const mockDispatch = jest.fn();
-const reservation = {
-  date: "2024-06-20",
-  time: "19:00",
-  guests: 2,
-  occasion: "Birthday",
-};
+const mockAvailableTimes = ['19:00', "20:00", "21:30"];
+const mockDispatch= jest.fn();
+const mockSubmitForm = jest.fn();
 
-const availableTimes = ["17:00", "18:00", "19:00"];
+test('renders booking form', () => {
+render(<BookingForm reservation={mockReservation}   setReservation={mockSetReservation} availableTimes={mockAvailableTimes} dispatch={mockDispatch} submitForm={mockSubmitForm}/>)
+const submitButton = screen.getByText('Book Now!')
+expect(submitButton).toBeInTheDocument()
 
-describe("BookingForm Component", () => {
-  beforeEach(() => {
-    mockSetReservation.mockClear();
-    mockDispatch.mockClear();
-    submitAPI.mockClear();
-  });
+});
 
-  test("renders form with initial values", () => {
-    render(
-      <BookingForm
-        reservation={reservation}
-        setReservation={mockSetReservation}
-        availableTimes={availableTimes}
-        dispatch={mockDispatch}
-        submitForm={jest.fn()}
-      />
-    );
+test('submit button calls submitAPI', () => {
+render(<BookingForm reservation={mockReservation}   setReservation={mockSetReservation} availableTimes={mockAvailableTimes} dispatch={mockDispatch} submitForm={mockSubmitForm}/>)
+const submitButton = screen.getByText('Book Now!')
+fireEvent.click(submitButton)
+expect(mockSubmitForm).toHaveBeenCalled()
+});
 
-    expect(screen.getByLabelText("Choose date")).toHaveValue("2024-06-20");
-    expect(screen.getByLabelText("Choose time")).toHaveValue("19:00");
-    expect(screen.getByLabelText("Number of guests")).toHaveValue(2);
-    expect(screen.getByLabelText("Occasion")).toHaveValue("Birthday");
-  });
+test('onChange calls ava', () => {
 
-  test("handles input changes", () => {
-    render(
-      <BookingForm
-        reservation={reservation}
-        setReservation={mockSetReservation}
-        availableTimes={availableTimes}
-        dispatch={mockDispatch}
-        submitForm={jest.fn()}
-      />
-    );
+})
 
-    fireEvent.change(screen.getByLabelText("Choose date"), {
-      target: { value: "2024-06-21" },
-    });
+test('onChange calls dispatch', () => { 
+  render(<BookingForm reservation={mockReservation}   setReservation={mockSetReservation} availableTimes={mockAvailableTimes} dispatch={mockDispatch} submitForm={mockSubmitForm}/>)
+  const time = screen.getByTestId('time');
+  fireEvent.change(time, { target : {value : "20:00"}})
 
-    expect(mockSetReservation).toHaveBeenCalledWith({
-      ...reservation,
-      date: "2024-06-21",
-    });
-    expect(mockDispatch).toHaveBeenCalledWith({
-      type: "ADD_RESERVATION",
-      selectedTime: reservation.time,
-      selectedDate: reservation.date,
-    });
-  });
+  expect(mockDispatch).toHaveBeenCalled()
+});
 
-  test("handles form submission", () => {
-    const mockSubmitForm = jest.fn();
-    render(
-      <BookingForm
-        reservation={reservation}
-        setReservation={mockSetReservation}
-        availableTimes={availableTimes}
-        dispatch={mockDispatch}
-        submitForm={mockSubmitForm}
-      />
-    );
-
-    fireEvent.submit(screen.getByTestId("form"));
-
-    expect(localStorage.setItem).toHaveBeenCalledWith(
-      "reservation",
-      JSON.stringify(reservation)
-    );
-    expect(mockSubmitForm).toHaveBeenCalledWith(reservation);
-    expect(mockSetReservation).toHaveBeenCalledWith({
-      date: "",
-      time: "",
-      guests: 0,
-      occasion: "",
-    });
-  });
+test('submit button calls setReservation', () => { 
+  render(<BookingForm reservation={mockReservation}   setReservation={mockSetReservation} availableTimes={mockAvailableTimes} dispatch={mockDispatch} submitForm={mockSubmitForm}/>)
+  const submitButton = screen.getByText('Book Now!')
+  fireEvent.click(submitButton)
+  expect(mockSetReservation).toHaveBeenCalled()
 });

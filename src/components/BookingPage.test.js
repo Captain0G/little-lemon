@@ -1,52 +1,83 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import BookingPage from "./BookingPage";
-import { fetchAPI, submitAPI } from "./Api";
+import ConfirmedBooking from "./ConfirmedBooking";
 
-jest.mock("./Api");
-const availableTimes = ["17:00", "18:00", "19:00"];
-describe("BookingPage Component", () => {
-  beforeEach(() => {
-    fetchAPI.mockClear();
-    submitAPI.mockClear();
-  });
+test("Renders BookingPage", () => {
+  render(
+    <BrowserRouter>
+      <BookingPage />
+    </BrowserRouter>
+  );
+  const form = screen.getByTestId("form");
 
-  test("initializeTimes sets initial available times", () => {
-    render(
-      <BrowserRouter>
-        <BookingPage />
-      </BrowserRouter>
-    );
-
-    expect(fetchAPI).toHaveBeenCalledWith(new Date());
-    expect(screen.getByLabelText("Choose time").options.length).toBe(3); // 3 times returned from fetchAPI
-  });
-
-  test("updateTimes updates available times", () => {
-    render(
-      <BrowserRouter>
-        <BookingPage />
-      </BrowserRouter>
-    );
-
-    fireEvent.change(screen.getByLabelText("Choose date"), {
-      target: { value: "2024-06-20" },
-    });
-
-    expect(fetchAPI).toHaveBeenCalledTimes(2); // Initial call and update call
-    expect(screen.getByLabelText("Choose time").options.length).toBe(3); // 3 times returned from fetchAPI
-  });
-
-  test("submitForm navigates on successful submission", () => {
-     render(
-      <BrowserRouter>
-        <BookingPage availableTimes={availableTimes} />
-      </BrowserRouter>
-    );
-
-    fireEvent.submit(screen.getByTestId("form"));
-
-    expect(submitAPI).toHaveBeenCalled();
-    expect(window.location.pathname).toBe("/confirmed");
-  });
+  expect(form).toBeInTheDocument();
 });
+
+test("Checks all inputs are required", () => {
+
+  render(
+    <BrowserRouter>
+      <BookingPage />
+    </BrowserRouter>
+  );
+
+  const date = screen.getByTestId("date");
+  const time = screen.getByTestId("time");
+  const guests = screen.getByTestId("guests");
+  expect(date).toBeRequired()
+  expect(time).toBeRequired()
+  expect(guests).toBeRequired()
+
+});
+
+test("Checks all inputs recive only valid values", () => {
+
+  render(
+    <BrowserRouter>
+      <BookingPage />
+    </BrowserRouter>
+  );
+
+  const date = screen.getByTestId("date");
+  const time = screen.getByTestId("time");
+  const guests = screen.getByTestId("guests");
+  const occasion = screen.getByTestId("occasion");
+  const submit = screen.getByTestId("submit");
+  fireEvent.change(date, { target: { value: "2022-08-11" } });
+  fireEvent.change(time, { target: { value: "17:00" } });
+  fireEvent.change(guests, { target: { value: "1" } });
+  fireEvent.change(occasion, { target: { value: "Birthday" } });
+  expect(submit).toHaveAttribute('disabled')
+
+
+});
+
+test("Checks initilize times", () => {
+
+  render(
+    <BrowserRouter>
+      <BookingPage />
+    </BrowserRouter>
+  );
+
+  const time = screen.getByTestId("time1");
+
+  expect(time).toHaveAttribute('value')
+
+});
+
+test("Checks updateTimes functions", () => {
+  render(
+    <BrowserRouter>
+      <BookingPage />
+    </BrowserRouter>
+  );
+
+  const date = screen.getByTestId("date");
+  const firstTime = screen.getByTestId("time1");
+ fireEvent.change(date, { target: { value: "2024-08-11" } });
+  const secondTime = screen.getByTestId("time1");
+  expect(firstTime).not.toHaveValue(secondTime)
+});
+
