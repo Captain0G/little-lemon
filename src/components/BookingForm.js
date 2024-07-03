@@ -96,9 +96,9 @@ const BookingForm = ({
   return (
     <section>
       <h1 className="form-heading">Book a Table</h1>
-      <form className="ll-form" data-testid="form" onSubmit={submitHandler}>
+      <form className="ll-form" data-testid="form" aria-label="Booking a table" onSubmit={submitHandler}>
         <div className="input-group">
-          <label htmlFor="date">Choose date</label>
+          <label htmlFor="date" aria-label="choose a date">Choose date</label>
           <input
             onChange={changeHandler}
             value={reservation.date}
@@ -112,7 +112,7 @@ const BookingForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="time">Choose time</label>
+          <label htmlFor="time" aria-label="choose a time">Choose time</label>
 
           <select
             onChange={changeHandler}
@@ -136,7 +136,7 @@ const BookingForm = ({
           {errors.time && <p className="error"> {errors.time} </p>}
         </div>
         <div className="input-group">
-          <label htmlFor="name">Full Name</label>
+          <label htmlFor="name" aria-label="enter your full name">Full Name</label>
           <input 
           onChange={changeHandler}
           value={reservation.name}
@@ -151,7 +151,7 @@ const BookingForm = ({
           {errors.name && <p className="error"> {errors.name} </p>}
         </div>
             <div className="input-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" aria-label="enter your email">Email</label>
               <input type="email" name="email" placeholder="Email" 
               onChange={changeHandler}
               value={reservation.email}
@@ -162,7 +162,7 @@ const BookingForm = ({
               {errors.occasion && <p className="error"> {errors.emaill} </p>}
               </div>
         <div className="input-group">
-          <label htmlFor="guests">Number of guests</label>
+          <label htmlFor="guests" aria-label="enter the number of guests">Number of guests</label>
 
           <input
             onChange={changeHandler}
@@ -179,7 +179,7 @@ const BookingForm = ({
         </div>
 
         <div className="input-group">
-          <label htmlFor="occasion">Occasion</label>
+          <label htmlFor="occasion" aria-label="choose the occasion">Occasion</label>
 
           <select
             onChange={changeHandler}
@@ -187,6 +187,7 @@ const BookingForm = ({
             id="occasion"
             data-testid="occasion"
             required
+           
           >
             <option key={"chooseOccation"} value={""}>
               Choose an Occasion
@@ -207,7 +208,7 @@ const BookingForm = ({
 
         <input
           type="submit"
-          aria-label="On Click"
+          aria-label="submit on click"
           value="Book Now!"
           data-testid="submit"
           disabled={Object.keys(errors).length > 0}
