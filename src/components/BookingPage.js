@@ -5,7 +5,7 @@ import BookingForm from "./BookingForm";
 import { useReducer, useState } from "react";
 import Main from "./Main";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "./Sidebar";
+
 function BookingPage({isBurger, setBurger}) {
   const navigate = useNavigate("");
 

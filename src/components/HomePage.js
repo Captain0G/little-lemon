@@ -5,7 +5,7 @@ import Main from "./Main";
 import Specials from "./Specials";
 import CustomersSay from "./CustomersSay";
 import Chicago from "./Chicago";
-import Sidebar from "./Sidebar";
+
 function HomePage({isBurger, setBurger}) {
   return (
     <>
